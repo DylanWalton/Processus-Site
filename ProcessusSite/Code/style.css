@@ -1,0 +1,227 @@
+/* background animation */
+@keyframes background-colour {
+    from { background-color: #12263a; }
+    to { background-color: black; }
+}
+
+body {
+    animation: background-colour 800ms forwards paused;
+    background-size: 200%;
+    height: 60cm;
+    width: 100vw;
+    margin: 0rem;
+    overflow: hidden;
+}
+
+.container { 
+    display: inline-block; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#introText_1 {
+    font-size: 7em;
+    /* text-align: right; */
+    color: #f45b69;
+    letter-spacing: 10px;
+    font-family: monospace;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+        typing-right 3000ms steps(11),
+        cursor .5s step-end infinite alternate;
+}
+
+@keyframes defTrack-appear {
+    from {
+        opacity: 0;
+        transform: translate(-90%, 20%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-4%, 0%);
+    }
+}
+
+@keyframes imageTrack-appear {
+    from {
+        opacity: 0;
+        transform: translate(-1%, -20%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-95.85%, 0%);
+    }
+}
+
+/* --------------------------------Def-Stuff------------------------------------- */
+#def-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    top: 1600px;
+    left: 50%;
+    animation: defTrack-appear 2500ms forwards paused;
+}
+
+#image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    top: 1100px;
+    left: 50%;
+    animation: imageTrack-appear 2500ms forwards paused;
+    object-fit: cover;
+}
+
+.image {
+    width: 45vmin;
+    height: 35vmin;
+    border-radius: 4%;
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+#def-track:hover > .def::after {
+    opacity: 1;
+}
+
+#def-track > .def {
+    width: 45vmin;
+    height: 35vmin;
+    border-radius: 4%;
+    background-color: rgba(255, 255, 255, .02);
+    cursor: pointer;
+    position: relative;
+}
+
+.def:hover::before {
+    opacity: 1;
+}
+
+.def::before,
+.def::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+}
+
+.def::before {
+    background: radial-gradient(
+        1000px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, .13),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.def::after {  
+    background: radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y), 
+      rgba(255, 255, 255, 0.4),
+      transparent 40%
+    );
+    z-index: 1;
+}
+
+.def > .def-content {
+    background-color: rgb(23, 23, 23);
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    inset: 2px;
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+}
+
+h1, h2, h3, h4, span {
+    color: #2CA58D;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    display: inline-block;
+}
+
+.card-info-wrapper {
+    align-items: center;
+    margin-top: 25px;
+    display: inline-block;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.card-info {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+}
+
+.card-info-title > h3 {
+    display: table;
+    font-size: 5vmin;
+    line-height: 70px;
+}
+  
+.card-info-title > h4 {
+    color: rgba(255, 255, 255, 0.8);
+    display: table;
+    font-size: 1.7vmin;
+    margin-top: 40px;
+}
+
+@keyframes goSmallContainer {
+    to {
+        width: 20vmin;
+        height: 15vmin;
+        transform: translate(0%, 100%);
+    }
+}
+
+@keyframes goBigDef {
+    to {
+        width: 45vmin;
+        height: 35vmin;
+        transform: translate(0%, 0%);
+    }
+}
+/* -----------------------------------------Def-Stuff------------------------------------ */
+
+/* cursor blinking */
+@keyframes cursor {
+    50% { border-color: transparent; }
+}
+
+/* typing effect */
+@keyframes typing-right {
+    from { width:  0; }
+}
+
+#arrowImg {
+    position: absolute;
+    top: 1960px;
+    left: 0;
+    height: 30vmin;
+    width: 37vmin;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: .7; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
